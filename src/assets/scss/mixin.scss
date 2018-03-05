@@ -1,0 +1,155 @@
+// size 375px size(width px)
+@function size($size) {
+  $width: 375;
+  $scale: 10;
+  @return ($size / $width * $scale) * 1rem;
+}
+%init-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+%center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+%line-over{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+%line-overs{
+  display: -webkit-box !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+%row {
+  &::after {
+  content: " ";
+  display: table;
+  clear: both;
+  }
+}
+%space-wrap {
+  padding-left: .3rem;
+  padding-right: .3rem;
+}
+/**
+ * [when inside]
+  .foo {
+    @include when-inside('.active') {
+      animation: fadeIn 0.3s 1s forwards;
+    }
+  }
+ */
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+/**
+ * [clearfix]
+ * @include clearfix();
+ */
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+/**
+ * [position absolute]
+ * @include abs-pos(10px, 10px, 5px, 15px);
+ */
+@mixin abs-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  position: absolute;
+}
+/**
+ * [respond-to]
+ * --->mobile
+ * 480px xs 768px sm 992px md 1200px lg
+ * <----PC
+ * 1200px 
+  @include respond-to(sm) {
+    color: tomato;
+  }
+ */
+$breakpoints: (
+  'xs': 'only screen and ( min-width: 480px)',
+  'sm': 'only screen and ( min-width: 768px)',
+  'md': 'only screen and ( min-width: 992px)',
+  'lg': 'only screen and ( min-width: 1200px)',
+  'iphone': 'only screen and (min-device-width:320px) and (max-device-width:414px)',
+  'ipad': 'only screen and (min-device-width:768px) and (max-device-width:1024px)',
+) !default;
+@mixin respond-to($breakpoint) {
+  $query: map-get($breakpoints, $breakpoint);
+  @if not $query {
+    @error 'No value found for `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.';
+  }
+  @media #{if(type-of($query) == 'string', unquote($query), inspect($query))} {
+    @content;
+  }
+}
+/**
+ * [flexible]
+ * @include data-dpr(font-size, 14px)
+ * @include fon-size(14px)
+ */
+@mixin data-dpr($field, $val) {
+  [data-dpr="1"] & {
+    #{$field}: $val;
+  }
+  [data-dpr="2"] & {
+    #{$field}: $val * 2;
+  }
+  [data-dpr="3"] & {
+    #{$field}: $val * 3;
+  }
+}
+@mixin font-size($size){
+  font-size: $size;
+  [data-dpr="2"] & {
+    font-size: $size * 2;
+  }
+  [data-dpr="3"] & {
+    font-size: $size * 3;
+  }
+}
+/**
+ * [createCircleAnimation description]
+ */
+// @import "compass";
+// @mixin keyframes($cir) {}
+// @mixin transform($cir) {}
+// @mixin createCircleAnimation($i, $animTime, $totalTime, $delay) {      
+//   @include keyframes(circle#{$i}) {
+//     0% {              
+//       @include transform(translateX(0));            
+//     }
+//     #{($i * $delay)/$totalTime * 100}% {     
+//       @include transform(translateX(0));            
+//     }          
+//     #{($i * $delay + $animTime)/$totalTime * 100}% {     
+//       @include transform(translateX(60px));            
+//     }          
+//     100% {
+//       @include transform(translateX(60px));             
+//     }
+//   }      
+// }
