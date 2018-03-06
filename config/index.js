@@ -29,11 +29,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/get': {
-        target: 'https://zhihu-agent.herokuapp.com',
+      '/ykly-analysis-web': {
+        target: 'http://test.analysis.yktour.com.cn/',
         changeOrigin: true,
         pathRewrite: {
-          '^/get': '/get'
+          '^/ykly-analysis-web': '/ykly-analysis-web'
         }
       }
     },

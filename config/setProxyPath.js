@@ -1,24 +1,9 @@
 const paths = [
-  '/product',
-  '/member',
-  '/appindex',
-  '/httpRequest',
-  '/coupon',
-  '/scenicProduct',
-  '/excursions',
-  '/order',
-  '/pay',
-  '/visa',
-  '/appProduct',
-  '/cruise',
-  '/index',
-  '/collection',
-  '/touristinfo',
-  '/comaddress'
+  '/user'
 ]
 
 const useStrategy = {
-  target: 'http://test.m.yktour.com.cn',
+  target: 'http://test.analysis.yktour.com.cn/ykly-analysis-web',
   changeOrigin: true
 }
 

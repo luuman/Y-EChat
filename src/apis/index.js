@@ -1,14 +1,14 @@
 import axios from 'axios'
-import {baseUrl} from './env.js'
+// import {baseUrl} from './env.js'
 
-const TOKEN = '8259a6e8588e7f1b2789b1680209f2f58b6aaf8b'
+// const TOKEN = '8259a6e8588e7f1b2789b1680209f2f58b6aaf8b'
 
 import qs from 'qs'
 import * as Tool from 'UTIL/vuex'
 // axios 配置
 axios.defaults.timeout = 5000
-axios.defaults.baseURL = baseUrl
-axios.defaults.headers.common['Authorization'] = `token ${TOKEN}`
+// axios.defaults.baseURL = baseUrl
+// axios.defaults.headers.common['Authorization'] = `token ${TOKEN}`
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
 // 请求
@@ -70,27 +70,8 @@ export const oPost = (url, params, showLoading) => {
 }
 
 export default {
-  Login (username, reponame) {
-    return oGet(`/repos/${username}/${reponame}`)
-  },
-  CityList () {
-    return oGet(`/city/citylist`)
-  },
-  UsersList (since) {
-    return oGet(`/github/notifications?since=${since}`)
-  },
-  Notifications (page) {
-    return oGet(`/github/notifications?page=${page}`)
-  },
-  getNews (name, time) {
-    if (time) {
-      return oGet(`/get?api=/4/news/${name}/${time}`)
-    } else {
-      return oGet(`/get?api=/4/news/${name}`)
-    }
-  },
-  getNewsById (Id) {
-    return oGet(`/get?api=/4/news/${Id}`)
+  Login (userName, passWord) {
+    return oPost(`/ykly-analysis-web/user/common/login`, {userName, passWord})
   },
   Get (link) {
     return oGet(link)

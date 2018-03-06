@@ -4,7 +4,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './routes'
-// import 'UTIL/flexible'
+import 'UTIL/flexible'
 // import 'UTIL/rem'
 
 // import Alert from 'COMPONENT/alert'
