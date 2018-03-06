@@ -1,13 +1,17 @@
 <template>
   <div>
+    <heads :Title="$route.meta.title"></heads>
     <eLine :people="people" :rebate="rebate" :business="business" :time="time"></eLine>
   </div>
 </template>
 <script>
+  import Route from 'ROUTE'
+  import Heads from 'COMPONENT/head'
   import eLine from './e-line.vue'
   export default {
     components: {
-      eLine
+      eLine,
+      Heads
     },
     data () {
       return {
@@ -18,6 +22,8 @@
       }
     },
     mounted () {
+      console.log(Route.options.routes)
+      console.log(this.$route.meta.title)
     },
     watch: {
     },
