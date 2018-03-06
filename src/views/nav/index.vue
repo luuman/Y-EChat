@@ -4,16 +4,16 @@
       <li @click="link('Sale')" class="sale">
         <p><i></i><span>年终销售统计图表</span></p>
       </li>
-      <li @click="link('Sale')" class="classify">
+      <li @click="link('Classify')" class="classify">
         <p><i></i><span>盈科大类销售统计</span></p>
       </li>
-      <li @click="link('Sale')" class="year">
+      <li @click="link('Year')" class="year">
         <p><i></i><span>盈科年终销售统计</span></p>
       </li>
-      <li @click="link('Sale')" class="basis">
+      <li @click="link('Basis')" class="basis">
         <p><i></i><span>销售同比环比</span></p>
       </li>
-      <li @click="link('Sale')" class="having">
+      <li @click="link('Having')" class="having">
         <p><i></i><span>盈科所有数据统计</span></p>
       </li>
     </ul>
@@ -34,7 +34,7 @@
     },
     methods: {
       link (links) {
-        console.log(links)
+        this.$router.push({name: links})
       }
     },
     filters: {}
