@@ -1,16 +1,20 @@
 <template>
   <div>
     <heads :Title="$route.meta.title"></heads>
-    <eLine :people="people" :rebate="rebate" :business="business" :time="time"></eLine>
+    <!-- <eLine :people="people" :rebate="rebate" :business="business" :time="time"></eLine> -->
+    <div class="nav">
+      <router-link active-class replace to="/Sale/Line">月份统计</router-link>
+      <router-link active-class replace to="/Sale/Sector">各省订单</router-link>
+      <router-link active-class replace to="/Sale/Maps">地区分布</router-link>
+      <router-link active-class replace to="/Sale/Bar">销售统计</router-link>
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 <script>
-  import Route from 'ROUTE'
   import Heads from 'COMPONENT/head'
-  import eLine from './e-line.vue'
   export default {
     components: {
-      eLine,
       Heads
     },
     data () {
@@ -22,8 +26,6 @@
       }
     },
     mounted () {
-      console.log(Route.options.routes)
-      console.log(this.$route.meta.title)
     },
     watch: {
     },
@@ -35,4 +37,22 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   @import '../../assets/scss/mixin.scss';
+  .nav{
+    width: 100%;
+    height: size(45);
+    background: #f1f1f1;
+    box-shadow: 0.2px 0.4px 0 0 #eeeeee;
+    a{
+      width: 25%;
+      line-height: size(45);
+      text-align: center;
+      display: block;
+      float: left;
+      text-decoration: none;
+      color: #666666;
+    }
+    a.router-link-active{
+      color: #ff7e00;
+    }
+  }
 </style>

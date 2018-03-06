@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-  import eLine from 'COMPONENT/e-line'
+  import eLine from 'COMPONENT/e-map'
   export default {
     components: {
       eLine

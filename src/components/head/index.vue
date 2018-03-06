@@ -34,7 +34,6 @@
         this.$router.push({name: links})
       },
       back (isNo) {
-        console.log(isNo)
         this.backs = isNo
       }
     },

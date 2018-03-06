@@ -10,8 +10,8 @@ import 'UTIL/flexible'
 // import Alert from 'COMPONENT/alert'
 // Vue.component('my-alert', Alert)
 
-import SVG from 'COMPONENT/svg'
-Vue.component('v-svg', SVG)
+// import SVG from 'COMPONENT/svg'
+// Vue.component('v-svg', SVG)
 
 // import FastClick from 'fastclick'
 // if ('addEventListener' in document) {
@@ -23,15 +23,15 @@ Vue.component('v-svg', SVG)
 // console.time('执行时间')
 // console.timeEnd('执行时间')
 
-import Alert from 'COMPONENT/vue-alerts'
-Vue.use(Alert)
+// import Alert from 'COMPONENT/vue-alerts'
+// Vue.use(Alert)
 
 import Loading from 'COMPONENT/vue-loading'
 Vue.prototype.$Loading = Loading
 Vue.use(Loading)
 
-import VueScroller from 'vue-scroller'
-Vue.use(VueScroller)
+// import VueScroller from 'vue-scroller'
+// Vue.use(VueScroller)
 
 // import store from 'VUEX/store'
 
