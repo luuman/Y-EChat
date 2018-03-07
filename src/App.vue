@@ -14,7 +14,7 @@
       includedComponents: ''
     }),
     mounted () {
-      API.Login('123213', '12323').then(res => {
+      API.Login('admin', 'admin').then(res => {
         console.log(res)
       }, (err) => {
         console.log(err)

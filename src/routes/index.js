@@ -32,7 +32,7 @@ export default new Router({
     //   component: Index
     // },
     {
-      path: '/Nav',
+      path: '/',
       name: 'Nav',
       meta: {
         title: '菜单'

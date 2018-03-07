@@ -5,6 +5,7 @@
 </template>
 <script>
   import eLine from 'COMPONENT/e-map'
+  import API from 'API'
   export default {
     components: {
       eLine
@@ -18,6 +19,11 @@
       }
     },
     mounted () {
+      API.GpMonth('山东省').then(res => {
+        console.log(res)
+      }, (err) => {
+        console.log(err)
+      })
     },
     watch: {
     },

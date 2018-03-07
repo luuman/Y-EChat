@@ -73,6 +73,10 @@ export default {
   Login (userName, passWord) {
     return oPost(`/ykly-analysis-web/user/common/login`, {userName, passWord})
   },
+  GpMonth (provinceName, categoryLargeName) {
+    // return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpMonth?provinceName=${provinceName}&categoryLargeName`)
+    return oGet(`/ykly-analysis-web/analysis/travel/query/queryRevenue?dataType=rate&orderYear=2018&orderMonth=01`)
+  },
   Get (link) {
     return oGet(link)
   }
