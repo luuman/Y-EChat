@@ -89,5 +89,8 @@ export default {
   },
   Get (link) {
     return oGet(link)
+  },
+  loadSaleByOrdertype (year, month, province) {
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpcategoryLargeName?theYear=${year}&theMonth=${month}&provinceName=${province}`)
   }
 }
