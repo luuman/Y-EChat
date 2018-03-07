@@ -8,17 +8,17 @@
 <script>
   import 'ASSET/scss/mreset.scss'
   import '../node_modules/progressive-image/dist/index.css'
-  import API from 'API'
+  // import API from 'API'
   export default {
     data: () => ({
       includedComponents: ''
     }),
     mounted () {
-      API.Login('admin', 'admin').then(res => {
-        console.log(res)
-      }, (err) => {
-        console.log(err)
-      })
+      // API.Login('admin', 'admin').then(res => {
+      //   console.log(res)
+      // }, (err) => {
+      //   console.log(err)
+      // })
       // console.log(this.$route.meta)
     }
   }
