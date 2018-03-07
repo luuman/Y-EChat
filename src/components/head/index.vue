@@ -8,7 +8,7 @@
         <span></span>
       </div>
       <ul>
-        <li @click="link('Sale')" class="sale">
+        <li @click="link('Sale')" class="sales">
           <p><i></i><span>年终销售统计图表</span></p>
         </li>
         <li @click="link('Classify')" class="classify">
@@ -62,6 +62,7 @@
     width: 100%;
     height: size(45);
     position: relative;
+    background: #FFF;
     .title{
       @include font-size(16px);
       line-height: size(45);
@@ -137,7 +138,7 @@
         }
       }
     }
-    .sale{
+    .sales{
       i{
         background-image: url(../../assets/img/nav/sale.png);
       }

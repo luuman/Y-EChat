@@ -5,6 +5,7 @@
 </template>
 <script>
   import eLine from 'COMPONENT/e-bar'
+  import API from 'API'
   export default {
     components: {
       eLine
@@ -18,6 +19,16 @@
       }
     },
     mounted () {
+      API.AllGpMonth().then(res => {
+        console.log(res)
+      }, (err) => {
+        console.log(err)
+      })
+      API.queryForOrderCount('').then(res => {
+        console.log(res)
+      }, (err) => {
+        console.log(err)
+      })
     },
     watch: {
     },

@@ -34,6 +34,7 @@
   }
   .view{
     width: size(375);
+    height: 100%;
     overflow: hidden;
   }
   // .router-slid-enter-active, .router-slid-leave-active {

@@ -73,9 +73,19 @@ export default {
   Login (userName, passWord) {
     return oPost(`/ykly-analysis-web/user/common/login`, {userName, passWord})
   },
+  // 出游人数、营业额、返佣
+  AllGpMonth () {
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpMonth`)
+  },
   GpMonth (provinceName, categoryLargeName) {
-    // return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpMonth?provinceName=${provinceName}&categoryLargeName`)
-    return oGet(`/ykly-analysis-web/analysis/travel/query/queryRevenue?dataType=rate&orderYear=2018&orderMonth=01`)
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpMonth?provinceName=${provinceName}&categoryLargeName=${categoryLargeName}`)
+  },
+  queryRevenue (dataType, orderYear, orderMonth) {
+    return oGet(`/ykly-analysis-web/analysis/travel/query/queryRevenue?dataType=${dataType}&orderYear=${orderYear}&orderMonth=${orderMonth}`)
+  },
+  // 所有订单数量
+  queryForOrderCount (theMonth) {
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForOrderCount?theMonth=${theMonth}`)
   },
   Get (link) {
     return oGet(link)

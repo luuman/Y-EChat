@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div class="view">
     <heads :Title="$route.meta.title"></heads>
     <!-- <eLine :people="people" :rebate="rebate" :business="business" :time="time"></eLine> -->
-    <div class="nav">
+    <div class="sale-tap">
       <router-link active-class replace to="/Sale/Line">月份统计</router-link>
       <router-link active-class replace to="/Sale/Sector">各省订单</router-link>
       <router-link active-class replace to="/Sale/Maps">地区分布</router-link>
       <router-link active-class replace to="/Sale/Bar">销售统计</router-link>
     </div>
-    <router-view></router-view>
+    <router-view class="views"></router-view>
   </div>
 </template>
 <script>
@@ -37,9 +37,23 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   @import '../../assets/scss/mixin.scss';
-  .nav{
+  .view{
+    width: 100%;
+    height: 100%;
+    // margin-top: size(80);
+    overflow: scroll;
+    background: #233b4c;
+  }
+  .views{
+    width: 100%;
+    // height: 100%;
+    padding-top: size(10);
+    overflow: hidden;
+  }
+  .sale-tap{
     width: 100%;
     height: size(45);
+    @include font-size(14px);
     background: #f1f1f1;
     box-shadow: 0.2px 0.4px 0 0 #eeeeee;
     a{
