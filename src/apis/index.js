@@ -89,8 +89,8 @@ export default {
   },
   // 获取所有省份某年的营业额、返佣、出游人数
   // datatype  数据类别  营业额：turnover  同比环比：rate orderYear 年份
-  queryRevenue (dataType, orderYear, orderMonth) {
-    return oGet(`/ykly-analysis-web/analysis/travel/query/queryRevenue?dataType=${dataType}&orderYear=${orderYear}&orderMonth=${orderMonth}`)
+  queryRevenue (dataType, orderYear, orderMonth, province, company) {
+    return oGet(`/ykly-analysis-web/analysis/travel/query/queryRevenue?dataType=${dataType}&orderYear=${orderYear}&orderMonth=${orderMonth}&province=${province}&company=${company}`)
   },
   // 所有订单数量
   queryForOrderCount (theMonth) {

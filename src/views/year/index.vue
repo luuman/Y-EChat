@@ -101,7 +101,7 @@
     },
     methods: {
       info (info) {
-        this.$router.push({name: 'YearInfo', params: { city: 1 }})
+        this.$router.push({name: 'YearInfo', params: { city: info }})
       }
     },
     filters: {}
