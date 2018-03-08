@@ -13,6 +13,9 @@ const Classify = r => require.ensure([], () => r(require('VIEW/classify')), 'cla
 const Year = r => require.ensure([], () => r(require('VIEW/year')), 'year')
 const Basis = r => require.ensure([], () => r(require('VIEW/basis')), 'basis')
 const Having = r => require.ensure([], () => r(require('VIEW/having')), 'having')
+const YearInfo = r => require.ensure([], () => r(require('VIEW/year/info.vue')), 'year')
+const BasisInfo = r => require.ensure([], () => r(require('VIEW/basis/info.vue')), 'basis')
+const HavingInfo = r => require.ensure([], () => r(require('VIEW/having/info.vue')), 'having')
 
 Vue.use(Router)
 
@@ -100,7 +103,14 @@ export default new Router({
       meta: {
         title: '盈科年终销售统计'
       },
-      component: Year
+      component: Year,
+      children: [
+        {
+          path: 'YearInfo',
+          name: 'YearInfo',
+          component: YearInfo
+        }
+      ]
     },
     {
       path: '/Basis',
@@ -108,7 +118,14 @@ export default new Router({
       meta: {
         title: '销售同比环比'
       },
-      component: Basis
+      component: Basis,
+      children: [
+        {
+          path: 'BasisInfo',
+          name: 'BasisInfo',
+          component: BasisInfo
+        }
+      ]
     },
     {
       path: '/Having',
@@ -116,7 +133,14 @@ export default new Router({
       meta: {
         title: '盈科所有数据统计'
       },
-      component: Having
+      component: Having,
+      children: [
+        {
+          path: 'HavingInfo',
+          name: 'HavingInfo',
+          component: HavingInfo
+        }
+      ]
     },
     {
       path: '/Index',
