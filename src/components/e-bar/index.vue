@@ -38,8 +38,8 @@
         default: []
       },
       time: {
-        type: String,
-        default: '2017'
+        type: Number,
+        default: 2017
       }
     },
     mounted () {

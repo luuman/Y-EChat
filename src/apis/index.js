@@ -6,7 +6,7 @@ import axios from 'axios'
 import qs from 'qs'
 import * as Tool from 'UTIL/vuex'
 // axios 配置
-axios.defaults.timeout = 5000
+// axios.defaults.timeout = 10000
 // axios.defaults.baseURL = baseUrl
 // axios.defaults.headers.common['Authorization'] = `token ${TOKEN}`
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
@@ -72,6 +72,10 @@ export const oPost = (url, params, showLoading) => {
 export default {
   Login (userName, passWord) {
     return oPost(`/ykly-analysis-web/user/common/login`, {userName, passWord})
+  },
+  // 获取摘要说明统计
+  queryForAbstract () {
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForAbstract`)
   },
   // 出游人数、营业额、返佣
   AllGpMonth () {

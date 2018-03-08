@@ -2,10 +2,10 @@
   <div>
     <eLine v-if="people.length" :people="people" :rebate="rebate" :business="business" :time="time"></eLine>
     <div class="more">
-      <p>摘要：1.截至目前，盈科旅游下属分公司<span>{{list[0]}}</span>家，营业部<span>{{list[1]}}</span>家，其中<span>{{list[3]}}</span>家营业部分公司产生线上业务。</p>
-      <p>2.截至目前，盈科旅游下属分公司<span>{{list[4]}}</span>家，营业部<span>{{list[5]}}</span>家，其中<span>{{list[6]}}</span>家营业部分公司产生线上业务。</p>
-      <p>2. 自2016年以来盈科旅游线上平台总体营业额184037493元，总体返佣17626172元。</p>
-      <p>3. 近三年出行人次计107829，其中2016年2385人次，2017年101349人次，2018年4095人次（截止2月9日）。</p>
+      <p>摘要：1.截至目前，盈科旅游下属分公司<span>{{list.company}}</span>家，营业部<span>{{list.department}}</span>家，其中<span>{{list.companyDepartment}}</span>家营业部分公司产生线上业务。</p>
+      <p>2.截至目前，盈科旅游下属分公司<span>{{list.onlineDepartment}}</span>家，营业部<span>{{list.turnover}}</span>家，其中<span>{{list.rebate}}</span>家营业部分公司产生线上业务。</p>
+      <p>2. 自2016年以来盈科旅游线上平台总体营业额<span>{{list.onlineDepartment}}</span>元，总体返佣<span>{{list.peopleNumber}}</span>元。</p>
+      <p>3. 近三年出行人次计107829，其中2016年<span>{{list.peopleNumber2016}}</span>人次，2017年<span>{{list.peopleNumber2017}}</span>人次，2018年<span>{{list.peopleNumber2018}}</span>人次（截止2月9日）。</p>
     </div>
   </div>
 </template>
@@ -26,6 +26,11 @@
       }
     },
     mounted () {
+      API.queryForAbstract().then(res => {
+        this.list.data.data
+      }, (err) => {
+        console.log(err)
+      })
       API.AllGpMonth().then(res => {
         if (res.flag === 20000) {
           console.log(res.data.reportList)
