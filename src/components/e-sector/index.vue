@@ -21,19 +21,11 @@
         type: String,
         default: '正在加载...'
       },
-      people: {
+      ForOrder: {
         type: Array,
         default: []
       },
-      rebate: {
-        type: Array,
-        default: []
-      },
-      business: {
-        type: Array,
-        default: []
-      },
-      time: {
+      city: {
         type: Array,
         default: []
       }
@@ -76,7 +68,7 @@
           // textStyle:{
           //   fontSize:10
           // },
-          data: ['安徽省', '北京市', '福建省', '甘肃省', '广东省', '广西壮族自治区', '贵州省', '海南省', '河北省', '河南省', '黑龙江省', '湖北省', '吉林省', '江苏省', '江西省', '辽宁省', '内蒙古自治区', '青海省', '山东省', '山西省', '陕西省', '上海市', '四川省', '天津市', '浙江省', '重庆市']
+          data: this.city
         },
         // toolbox: {
         //   show: true,
@@ -121,112 +113,7 @@
                 show: true
               }
             },
-            data: [
-              {
-                value: 27,
-                name: '安徽省'
-              },
-              {
-                value: 695,
-                name: '北京市'
-              },
-              {
-                value: 361,
-                name: '福建省'
-              },
-              {
-                value: 176,
-                name: '甘肃省'
-              },
-              {
-                value: 749,
-                name: '广东省'
-              },
-              {
-                value: 61,
-                name: '广西壮族自治区'
-              },
-              {
-                value: 7,
-                name: '贵州省'
-              },
-              {
-                value: 40,
-                name: '海南省'
-              },
-              {
-                value: 1812,
-                name: '河北省'
-              },
-              {
-                value: 3191,
-                name: '河南省'
-              },
-              {
-                value: 350,
-                name: '黑龙江省'
-              },
-              {
-                value: 160,
-                name: '湖北省'
-              },
-              {
-                value: 4,
-                name: '吉林省'
-              },
-              {
-                value: 680,
-                name: '江苏省'
-              },
-              {
-                value: 259,
-                name: '江西省'
-              },
-              {
-                value: 162,
-                name: '辽宁省'
-              },
-              {
-                value: 70,
-                name: '内蒙古自治区'
-              },
-              {
-                value: 1,
-                name: '青海省'
-              },
-              {
-                value: 3165,
-                name: '山东省'
-              },
-              {
-                value: 3810,
-                name: '山西省'
-              },
-              {
-                value: 206,
-                name: '陕西省'
-              },
-              {
-                value: 67,
-                name: '上海市'
-              },
-              {
-                value: 115,
-                name: '四川省'
-              },
-              {
-                value: 486,
-                name: '天津市'
-              },
-              {
-                value: 197,
-                name: '浙江省'
-              },
-              {
-                value: 24,
-                name: '重庆市'
-              }
-            ]
+            data: this.ForOrder
           }
           // ,
           // {

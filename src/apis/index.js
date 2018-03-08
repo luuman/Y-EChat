@@ -80,6 +80,9 @@ export default {
   GpMonth (provinceName, categoryLargeName) {
     return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpMonth?provinceName=${provinceName}&categoryLargeName=${categoryLargeName}`)
   },
+  GpProvince (theYearh, theMonth, categoryLargeName) {
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpProvince?theYearh=${theYearh}&theMonth=${theMonth}&categoryLargeName=${categoryLargeName}`)
+  },
   queryRevenue (dataType, orderYear, orderMonth) {
     return oGet(`/ykly-analysis-web/analysis/travel/query/queryRevenue?dataType=${dataType}&orderYear=${orderYear}&orderMonth=${orderMonth}`)
   },

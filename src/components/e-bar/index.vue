@@ -33,9 +33,13 @@
         type: Array,
         default: []
       },
-      time: {
+      date: {
         type: Array,
         default: []
+      },
+      time: {
+        type: String,
+        default: '2017'
       }
     },
     mounted () {
@@ -45,10 +49,9 @@
       var myChart = echarts.init(document.getElementById('line'), 'dark')
       var colors = ['#5abff0', '#726be3', '#45b17f']
       var symbolSize = 10
-      var Time = new Date().getFullYear() - 1
       var option = {
         title: {
-          text: Time + '年盈科各省销售统计',
+          text: this.time + '年盈科各省销售统计',
           left: 'center',
           textStyle: {
             color: '#fff'
@@ -71,7 +74,7 @@
         //   }
         // },
         legend: {
-          data: [`${Time}返佣额`, `${Time}营业额`, `${Time}出游人数`],
+          data: [`${this.time}返佣额`, `${this.time}营业额`, `${this.time}出游人数`],
           bottom: '10px'
         },
         xAxis: [
@@ -80,13 +83,13 @@
             axisTick: {
               alignWithLabel: true
             },
-            data: this.time
+            data: this.date
           }
         ],
         yAxis: [
           {
             type: 'value',
-            name: `${Time}返佣额`,
+            name: `${this.time}返佣额`,
             min: 0,
             max: Math.max.apply({}, this.business),
             position: 'right',
@@ -101,7 +104,7 @@
           },
           {
             type: 'value',
-            name: `${Time}营业额`,
+            name: `${this.time}营业额`,
             min: 0,
             max: Math.max.apply({}, this.business),
             position: 'right',
@@ -117,7 +120,7 @@
           },
           {
             type: 'value',
-            name: `${Time}出游人数`,
+            name: `${this.time}出游人数`,
             min: 0,
             max: Math.max.apply({}, this.people),
             position: 'left',
@@ -133,14 +136,14 @@
         ],
         series: [
           {
-            name: `${Time}返佣额`,
+            name: `${this.time}返佣额`,
             type: 'bar',
             smooth: true,
             symbolSize: symbolSize,
             data: this.rebate
           },
           {
-            name: `${Time}营业额`,
+            name: `${this.time}营业额`,
             type: 'bar',
             smooth: true,
             symbolSize: symbolSize,
@@ -148,7 +151,7 @@
             data: this.business
           },
           {
-            name: `${Time}出游人数`,
+            name: `${this.time}出游人数`,
             type: 'bar',
             smooth: true,
             symbolSize: symbolSize,
