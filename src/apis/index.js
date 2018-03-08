@@ -99,7 +99,8 @@ export default {
   Get (link) {
     return oGet(link)
   },
+  // 2018出游人数(大类销售统计)
   loadSaleByOrdertype (year, month, province) {
-    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpcategoryLargeName?theYear=${year}&theMonth=${month}&provinceName=${province}`)
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpcategoryLargeName?theYearh=${year}&theMonth=${month}&provinceName=${province}`)
   }
 }
