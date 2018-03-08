@@ -142,7 +142,7 @@
       }
     },
     mounted () {
-      API.AllGpMonth().then(res => {
+      API.queryRevenue('turnover', '2018', '').then(res => {
         if (res.flag === 20000) {
         }
       }, (err) => {

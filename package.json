@@ -8,8 +8,14 @@
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "build:test": "node build/build-test.js",
+    "analyz": "NODE_ENV=production npm_config_report=true npm run build",
     "lint": "eslint --ext .js,.vue src",
-    "analyz": "NODE_ENV=production npm_config_report=true npm run build"
+    "updeps": "npm install --no-optional",
+    "deploy:test": "npm run updeps && npm run clean && npm run build:test",
+    "deploy": "npm run updeps && npm run clean && npm run build",
+    "start": "npm run updeps && npm run dev",
+    "clean": "rimraf dist && rimraf package",
+    "flushCDN": "node deploy/cdn/clearcache.js"
   },
   "dependencies": {
     "echarts": "^4.0.4",
