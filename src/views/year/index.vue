@@ -100,8 +100,8 @@
     watch: {
     },
     methods: {
-      info () {
-        this.$router.push({name: 'YearInfo'})
+      info (info) {
+        this.$router.push({name: 'YearInfo', params: { city: 1 }})
       }
     },
     filters: {}

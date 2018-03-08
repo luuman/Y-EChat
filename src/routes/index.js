@@ -103,14 +103,12 @@ export default new Router({
       meta: {
         title: '盈科年终销售统计'
       },
-      component: Year,
-      children: [
-        {
-          path: 'YearInfo',
-          name: 'YearInfo',
-          component: YearInfo
-        }
-      ]
+      component: Year
+    },
+    {
+      path: '/YearInfo/:city',
+      name: 'YearInfo',
+      component: YearInfo
     },
     {
       path: '/Basis',
@@ -118,14 +116,12 @@ export default new Router({
       meta: {
         title: '销售同比环比'
       },
-      component: Basis,
-      children: [
-        {
-          path: 'BasisInfo',
-          name: 'BasisInfo',
-          component: BasisInfo
-        }
-      ]
+      component: Basis
+    },
+    {
+      path: '/BasisInfo/:city',
+      name: 'BasisInfo',
+      component: BasisInfo
     },
     {
       path: '/Having',
@@ -133,14 +129,12 @@ export default new Router({
       meta: {
         title: '盈科所有数据统计'
       },
-      component: Having,
-      children: [
-        {
-          path: 'HavingInfo',
-          name: 'HavingInfo',
-          component: HavingInfo
-        }
-      ]
+      component: Having
+    },
+    {
+      path: '/HavingInfo/:city',
+      name: 'HavingInfo',
+      component: HavingInfo
     },
     {
       path: '/Index',
