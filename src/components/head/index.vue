@@ -2,7 +2,7 @@
   <div class="head">
     <span class="nav"  @click="back(true)"></span>
     <p class="title">{{Title}}</p>
-    <span class="down"></span>
+    <span class="down" @click="download()"></span>
     <div class="navs" v-if="backs">
       <div class="back" @click="back(false)">
         <span></span>
@@ -28,6 +28,7 @@
   </div>
 </template>
 <script>
+  import API from 'API'
   export default {
     methods: {
       link (links) {
@@ -35,6 +36,11 @@
       },
       back (isNo) {
         this.backs = isNo
+      },
+      download () {
+        if (this.$route.path === '/Basis') {
+
+        }
       }
     },
     data () {
