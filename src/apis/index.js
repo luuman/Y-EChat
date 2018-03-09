@@ -99,6 +99,18 @@ export default {
   queryForOrderCount (theMonth) {
     return oGet(`/ykly-analysis-web/analysis/report/query/queryForOrderCount?theMonth=${theMonth}`, true)
   },
+  // 营业部每年的同比环比数据下载
+  downRate (theMonth) {
+    return oGet(`/ykly-analysis-web/analysis/travel/export/exportBranchRateEveryYear?dataType=branchRateEveryYear`, true)
+  },
+  // 营业部每年的营业额数据下载
+  downTurnover (theMonth) {
+    return oGet(`/ykly-analysis-web/analysis/travel/export/exportBranchTurnoverEveryYear?dataType=branchTurnoverEveryYear`, true)
+  },
+  // 营业部所有年份的营业额汇总数据下载
+  downAllYear (theMonth) {
+    return oGet(`/ykly-analysis-web/analysis/travel/export/exportBranchTurnoverAllYear?dataType=branchTurnoverAllYear`, true)
+  },
   Get (link) {
     return oGet(link, true)
   },

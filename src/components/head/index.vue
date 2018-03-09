@@ -39,9 +39,7 @@
         this.backs = isNo
       },
       download () {
-        if (this.$route.path === '/Basis') {
-
-        }
+        this.$emit('down')
       }
     },
     data () {

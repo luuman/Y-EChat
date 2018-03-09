@@ -20,7 +20,7 @@
       }
     },
     mounted () {
-      API.GpProvince(this.Time, '', '').then(res => {
+      API.GpProvince(new Date().getFullYear() - 1, '', '').then(res => {
         if (res.flag === 20000) {
           console.log(res.data.reportList)
           res.data.reportList.forEach((v) => {

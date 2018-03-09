@@ -121,6 +121,7 @@
       }
     },
     mounted () {
+      console.log(this.params)
       API.queryRevenue('rate', this.date, this.months, this.title, '').then(res => {
         if (res.flag === 20000) {
           let last = {
@@ -138,9 +139,9 @@
             list: []
           }
           res.data.companyRevenue.parmList.forEach((v) => {
-            last.turnover += Number(v.turnover)
-            last.rebate += Number(v.rebate)
-            last.travelnum += Number(v.travelnum)
+            // last.turnover += Number(v.turnover)
+            // last.rebate += Number(v.rebate)
+            // last.travelnum += Number(v.travelnum)
             this.cityList.push({
               companyName: v.companyName,
               turnover: v.turnover,
