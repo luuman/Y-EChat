@@ -11,7 +11,7 @@
     <div class="table_area" v-show="this.active == 0">
       <table>
         <tr class="tab_title">
-          <td style="width: 18%;">产品类型</td>
+          <td style="width: 16%;">产品类型</td>
           <td>营业额(2017/元)</td>
           <td>营业额(2018/元)</td>
           <td>返佣(2017/元)</td>
@@ -164,26 +164,30 @@
       },
       loadData: function (num) {
         if (num === 0) {
-          API.loadSaleByOrdertype('2017', '', '').then(res1 => {
-            console.log(res1)
-            API.loadSaleByOrdertype('2018', '', '').then(res2 => {
-              console.log(res2)
-              for (let i = 0; i < res1.data.reportList.length; i++) {
-                for (let j = 0; j < res2.data.reportList.length; j++) {
-                  if (res1.data.reportList[i].categoryLargeName === res2.data.reportList[j].categoryLargeName) {
-                    this.tableData.push([res1.data.reportList[i].categoryLargeName, res1.data.reportList[i].turnoverTotal, res2.data.reportList[j].turnoverTotal, res1.data.reportList[i].rebateTotal, res2.data.reportList[j].rebateTotal, res1.data.reportList[i].peopleTotal, res2.data.reportList[j].peopleTotal])
-                  }
-                }
-              }
-              console.log(this.tableData)
-            })
+          API.loadSaleByOrdertype('', '', '').then(res => {
+            this.tableData = []
+            let turnoverTotal = 0
+            let nowTurnoverTotal = 0
+            let rebateTotal = 0
+            let nowRebateTotal = 0
+            let peopleTotal = 0
+            let nowPeopleTotal = 0
+            for (let i = 0; i < res.data.reportList.length; i++) {
+              turnoverTotal += Number(res.data.reportList[i].turnoverTotal)
+              nowTurnoverTotal += Number(res.data.reportList[i].nowTurnoverTotal)
+              rebateTotal += Number(res.data.reportList[i].rebateTotal)
+              nowRebateTotal += Number(res.data.reportList[i].nowRebateTotal)
+              peopleTotal += Number(res.data.reportList[i].peopleTotal)
+              nowPeopleTotal += Number(res.data.reportList[i].nowPeopleTotal)
+              this.tableData.push([res.data.reportList[i].categoryLargeName, res.data.reportList[i].turnoverTotal, res.data.reportList[i].nowTurnoverTotal, res.data.reportList[i].rebateTotal, res.data.reportList[i].nowRebateTotal, res.data.reportList[i].peopleTotal, res.data.reportList[i].nowPeopleTotal])
+            }
+            this.tableData.push(['汇总', turnoverTotal, nowTurnoverTotal, rebateTotal, nowRebateTotal, peopleTotal, nowPeopleTotal])
           })
         } else if (num === 1) {
           API.loadSaleByOrdertype('2018', '', '').then(res => {
-            console.log(res)
             this.pieLegendData = res.data.reportList.map((v, i) => v.categoryLargeName)
             this.pieSeriesData = res.data.reportList.map((v, i) => {
-              return {value: v.peopleTotal, name: v.categoryLargeName}
+              return {value: v.nowPeopleTotal, name: v.categoryLargeName}
             })
             this.pieInit()
           })
@@ -191,9 +195,9 @@
           API.loadSaleByOrdertype('2018', '', '').then(res => {
             console.log(res)
             this.barLegendData = res.data.reportList.map((v, i) => v.categoryLargeName)
-            this.barSeriesTotal = res.data.reportList.map((v, i) => v.turnoverTotal)
-            this.barSeriesRebate = res.data.reportList.map((v, i) => v.rebateTotal)
-            this.barSeriesPeople = res.data.reportList.map((v, i) => v.peopleTotal)
+            this.barSeriesTotal = res.data.reportList.map((v, i) => v.nowTurnoverTotal)
+            this.barSeriesRebate = res.data.reportList.map((v, i) => v.nowRebateTotal)
+            this.barSeriesPeople = res.data.reportList.map((v, i) => v.nowPeopleTotal)
             this.barInit()
           })
         }
@@ -221,7 +225,7 @@
         @include font-size(16px);
       }
       .active {
-        border-bottom: size(2) solid red;
+        border-bottom: size(2) solid #c6129a;
       }
     }
   }
@@ -229,10 +233,12 @@
     overflow-x: scroll;
     table {
       width: 100%;
+      color: #fff;
       .tab_title {
         td {
           text-align: center;
           width: 14%;
+          background: #50afbf;
         }
       }
       td {
@@ -242,10 +248,13 @@
         height: size(40);
       }
       tr:nth-child(odd) {
-        background: #369ddf;
+        background: #324e78;
       }
       tr:nth-child(even) {
-        background: #2656cf;
+        background: #365d83;
+      }
+      tr:last-child {
+        background: #50afbf;
       }
       td:nth-child(1) {
         text-align: center;
