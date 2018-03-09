@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <heads :Title="$route.params.city"></heads>
+    <heads :Title="title"></heads>
     <div class="table">
       <div class="th">
         <div class="box1">分公司</div>
@@ -80,7 +80,7 @@
           this.cityList[index].show = false
         } else {
           citys.show = true
-          API.queryRevenue('rate', this.date, this.months, this.$route.params.city, name).then(res => {
+          API.queryRevenue('rate', this.date, this.months, this.title, name).then(res => {
             if (res.flag === 20000) {
               res.data.companyRevenue.parmList.forEach((v) => {
                 this.cityList[index].list.push({
@@ -121,20 +121,21 @@
       }
     },
     mounted () {
-      API.queryRevenue('rate', this.date, this.months, this.$route.params.city, '').then(res => {
+      // console.log(JSON.parse(this.title))
+      API.queryRevenue('rate', this.date, this.months, this.title, '').then(res => {
         if (res.flag === 20000) {
           let last = {
             companyName: '汇总',
             show: false,
-            turnover: 0,
-            turnoverYearonyear: 0,
-            turnoverMonthonmonth: 0,
-            rebate: 0,
-            rebateYearonyear: 0,
-            rebateMonthonmonth: 0,
-            travelnum: 0,
-            travelnumYearonyear: 0,
-            travelnumMonthonmonth: 0,
+            turnover: this.params.turnover,
+            turnoverYearonyear: this.params.turnoverYearonyear,
+            turnoverMonthonmonth: this.params.turnoverMonthonmonth,
+            rebate: this.params.rebate,
+            rebateYearonyear: this.params.rebateYearonyear,
+            rebateMonthonmonth: this.params.rebateMonthonmonth,
+            travelnum: this.params.travelnum,
+            travelnumYearonyear: this.params.travelnumYearonyear,
+            travelnumMonthonmonth: this.params.travelnumMonthonmonth,
             list: []
           }
           res.data.companyRevenue.parmList.forEach((v) => {
@@ -164,6 +165,8 @@
     },
     data () {
       return {
+        title: JSON.parse(this.$route.params.city).provinceName,
+        params: JSON.parse(this.$route.params.city),
         backs: false,
         showNo: false,
         cityList: [],

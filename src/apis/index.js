@@ -1,6 +1,6 @@
 import axios from 'axios'
+import router from '../routes'
 // import {baseUrl} from './env.js'
-
 // const TOKEN = '8259a6e8588e7f1b2789b1680209f2f58b6aaf8b'
 
 import qs from 'qs'
@@ -33,6 +33,10 @@ axios.interceptors.response.use((res) => {
   //   Tool.close()
   //   return Promise.reject(res)
   // }
+  if (res.data.flag === 50001) {
+    console.log('Login')
+    router.push({name: 'Login'})
+  }
   Tool.close()
   return res
 }, (error) => {
@@ -71,36 +75,36 @@ export const oPost = (url, params, showLoading) => {
 
 export default {
   Login (userName, passWord) {
-    return oPost(`/ykly-analysis-web/user/common/login`, {userName, passWord})
+    return oPost(`/ykly-analysis-web/user/common/login`, {userName, passWord}, true)
   },
   // 获取摘要说明统计
   queryForAbstract () {
-    return oGet(`/ykly-analysis-web/analysis/report/query/queryForAbstract`)
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForAbstract`, true)
   },
   // 出游人数、营业额、返佣
   AllGpMonth () {
-    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpMonth`)
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpMonth`, true)
   },
   GpMonth (provinceName, categoryLargeName) {
-    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpMonth?provinceName=${provinceName}&categoryLargeName=${categoryLargeName}`)
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpMonth?provinceName=${provinceName}&categoryLargeName=${categoryLargeName}`, true)
   },
   GpProvince (theYearh, theMonth, categoryLargeName) {
-    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpProvince?theYearh=${theYearh}&theMonth=${theMonth}&categoryLargeName=${categoryLargeName}`)
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpProvince?theYearh=${theYearh}&theMonth=${theMonth}&categoryLargeName=${categoryLargeName}`, true)
   },
   // 获取所有省份某年的营业额、返佣、出游人数
   // datatype  数据类别  营业额：turnover  同比环比：rate orderYear 年份
   queryRevenue (dataType, orderYear, orderMonth, province, company) {
-    return oGet(`/ykly-analysis-web/analysis/travel/query/queryRevenue?dataType=${dataType}&orderYear=${orderYear}&orderMonth=${orderMonth}&province=${province}&company=${company}`)
+    return oGet(`/ykly-analysis-web/analysis/travel/query/queryRevenue?dataType=${dataType}&orderYear=${orderYear}&orderMonth=${orderMonth}&province=${province}&company=${company}`, true)
   },
   // 所有订单数量
   queryForOrderCount (theMonth) {
-    return oGet(`/ykly-analysis-web/analysis/report/query/queryForOrderCount?theMonth=${theMonth}`)
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForOrderCount?theMonth=${theMonth}`, true)
   },
   Get (link) {
-    return oGet(link)
+    return oGet(link, true)
   },
   // 2018出游人数(大类销售统计)
   loadSaleByOrdertype (year, month, province) {
-    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpcategoryLargeName?theYearh=${year}&theMonth=${month}&provinceName=${province}`)
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpcategoryLargeName?theYearh=${year}&theMonth=${month}&provinceName=${province}`, true)
   }
 }

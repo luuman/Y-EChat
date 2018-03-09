@@ -28,10 +28,11 @@
   </div>
 </template>
 <script>
-  import API from 'API'
+  // import API from 'API'
   export default {
     methods: {
       link (links) {
+        this.backs = false
         this.$router.push({name: links})
       },
       back (isNo) {

@@ -101,6 +101,7 @@
     },
     methods: {
       info (info) {
+        if (info === null) return
         this.$router.push({name: 'YearInfo', params: { city: info }})
       }
     },

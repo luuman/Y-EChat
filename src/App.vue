@@ -7,6 +7,7 @@
 </template>
 <script>
   import 'ASSET/scss/mreset.scss'
+  import {getCookie} from 'UTIL/storage.js'
   import '../node_modules/progressive-image/dist/index.css'
   // import API from 'API'
   export default {
@@ -14,6 +15,7 @@
       includedComponents: ''
     }),
     mounted () {
+      console.log(getCookie('BI'))
       // API.Login('admin', 'admin').then(res => {
       //   console.log(res)
       // }, (err) => {

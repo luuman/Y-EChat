@@ -55,7 +55,7 @@
       }
     },
     mounted () {
-      API.queryRevenue('turnover', '', '', '').then(res => {
+      API.queryRevenue('turnover', '', '', '', '').then(res => {
         if (res.flag === 20000) {
           res.data.companyRevenue.parmList.forEach((v) => {
             this.news.turnover += Number(v.turnover)
@@ -76,6 +76,7 @@
     },
     methods: {
       info (info) {
+        if (!info) return
         this.$router.push({name: 'HavingInfo', params: { city: info }})
       }
     },

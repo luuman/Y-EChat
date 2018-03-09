@@ -3,139 +3,71 @@
     <heads :Title="$route.meta.title"></heads>
     <div class="top">
       <p class="title">环比同比汇总</p>
-      <div class="box">
+      <!-- <div class="box">
         <div class="last">
           <p>
-            <span class="total">￥{{shows}}</span>
+            <span class="total">￥{{news.turnover}}</span>
             <span class="text">{{date}}年营业额</span>
           </p>
           <p>
-            <span :class="{total: true, one: huans.replace('%','') > 0}">{{huans}}<i></i></span>
+            <span :class="{total: true, one: huans.replace('%','') > 0}">{{news.turnoverYearonyear}}<i></i></span>
             <span class="text">同比(营业额)％</span>
           </p>
           <p>
-            <span :class="{total: true, one: huans.replace('%','') > 0}">{{huans}}<i></i></span>
+            <span :class="{total: true, one: huans.replace('%','') > 0}">{{news.turnoverMonthonmonth}}<i></i></span>
             <span class="text">环比(营业额)％</span>
           </p>
         </div>
         <div class="last">
           <p>
-            <span class="total">￥{{shows}}</span>
+            <span class="total">￥{{news.rebate}}</span>
             <span class="text">{{date}}年返佣</span>
           </p>
           <p>
-            <span :class="{total: true, one: huans.replace('%','') > 0}">{{huans}}<i></i></span>
+            <span :class="{total: true, one: huans.replace('%','') > 0}">{{news.rebateYearonyear}}<i></i></span>
             <span class="text">同比(返佣)％</span>
           </p>
           <p>
-            <span :class="{total: true, one: huans.replace('%','') > 0}">{{huans}}<i></i></span>
+            <span :class="{total: true, one: huans.replace('%','') > 0}">{{news.rebateMonthonmonth}}<i></i></span>
             <span class="text">环比(返佣)％</span>
           </p>
         </div>
         <div class="new">
           <p>
-            <span class="total">￥{{shows}}</span>
+            <span class="total">￥{{news.travelnum}}</span>
             <span class="text">{{date}}年出游人</span>
           </p>
           <p>
-            <span :class="{total: true, one: huans.replace('%','') > 0}">{{huans}}<i></i></span>
+            <span :class="{total: true, one: huans.replace('%','') > 0}">{{news.travelnumYearonyear}}<i></i></span>
             <span class="text">同比(出游人)％</span>
           </p>
           <p>
-            <span :class="{total: true, one: huan.replace('%','') > 0}">{{huan}}<i></i></span>
+            <span :class="{total: true, one: huan.replace('%','') > 0}">{{news.travelnumMonthonmonth}}<i></i></span>
             <span class="text">环比(出游人)％</span>
+          </p>
+        </div>
+      </div> -->
+      <div class="box">
+        <div class="new">
+          <p>
+            <span class="total">￥{{news.turnover}}</span>
+            <span class="text">营业额</span>
+          </p>
+          <p>
+            <span class="total">￥{{news.rebate}}</span>
+            <span class="text">返佣</span>
+          </p>
+          <p>
+            <span class="total">￥{{news.travelnum}}</span>
+            <span class="text">出游人</span>
           </p>
         </div>
       </div>
       <div class="list">
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
+        <div class="item" @click="info(item)" v-for="item in yearList">
+          <p>{{item.provinceName}}</p>
+          <p>营业额<span> ¥{{item.turnover}}</span></p>
+          <p>出游人{{item.travelnum}}</p>
           <p><a href="javascript:;">更多</a><i>></i></p>
         </div>
       </div>
@@ -154,12 +86,51 @@
         shows: 0,
         huan: '-100%',
         huans: '20%',
-        date: new Date().getFullYear()
+        news: {
+          turnover: 0,
+          turnoverYearonyear: 0,
+          turnoverMonthonmonth: 0,
+          rebate: 0,
+          rebateYearonyear: 0,
+          rebateMonthonmonth: 0,
+          travelnum: 0,
+          travelnumYearonyear: 0,
+          travelnumMonthonmonth: 0
+        },
+        yearList: [],
+        date: new Date().getFullYear(),
+        month: '01'
       }
     },
     mounted () {
-      API.AllGpMonth().then(res => {
+      API.queryRevenue('rate', this.date, this.month, '', '').then(res => {
         if (res.flag === 20000) {
+          res.data.companyRevenue.parmList.forEach((v) => {
+            this.news.turnover += Number(v.turnover)
+            this.news.rebate += Number(v.rebate)
+            this.news.travelnum += Number(v.travelnum)
+            // this.news.turnover += Number(v.turnover)
+            // this.news.turnoverYearonyear += Number(v.turnoverYearonyear)
+            // this.news.turnoverMonthonmonth += Number(v.turnoverMonthonmonth)
+            // this.news.rebate += Number(v.rebate)
+            // this.news.rebateYearonyear += Number(v.rebateYearonyear)
+            // this.news.rebateMonthonmonth += Number(v.rebateMonthonmonth)
+            // this.news.travelnum += Number(v.travelnum)
+            // this.news.travelnumYearonyear += Number(v.travelnumYearonyear)
+            // this.news.travelnumMonthonmonth += Number(v.travelnumMonthonmonth)
+            this.yearList.push({
+              provinceName: v.provinceName,
+              turnover: v.turnover,
+              turnoverYearonyear: v.turnoverYearonyear,
+              turnoverMonthonmonth: v.turnoverMonthonmonth,
+              rebate: v.rebate,
+              rebateYearonyear: v.rebateYearonyear,
+              rebateMonthonmonth: v.rebateMonthonmonth,
+              travelnum: v.travelnum,
+              travelnumYearonyear: v.travelnumYearonyear,
+              travelnumMonthonmonth: v.travelnumMonthonmonth
+            })
+          })
         }
       }, (err) => {
         console.log(err)
@@ -168,8 +139,9 @@
     watch: {
     },
     methods: {
-      info () {
-        this.$router.push({name: 'YearInfo'})
+      info (info) {
+        if (!info.provinceName) return
+        this.$router.push({name: 'BasisInfo', params: { city: JSON.stringify(info) }})
       }
     },
     filters: {}
@@ -194,6 +166,7 @@
       p{
         // width: size(90);
         float: left;
+        height: 100%;
         @include font-size(14px);
         text-align: left;
         color: #666;
@@ -232,7 +205,7 @@
   }
   .top{
     width: size(375);
-    height: size(270);
+    height: size(130);
     background-image: linear-gradient(30deg, #fb5747, #fd9a2b);
     .title{
       @include font-size(14px);
@@ -280,6 +253,7 @@
                 width: size(18);
                 height: size(12);
                 display: inline-block;
+                vertical-align: middle;
                 line-height: size(20);
                 margin-left: size(6);
                 background-image: url(../../assets/img/base/down.png);
