@@ -1,5 +1,5 @@
 <template>
-  <div id='line' style='width: 100%;height:400px;'></div>
+  <div id='line' style='width: 100%;height:600px;'></div>
 </template>
 <script>
   import echarts from 'echarts'
@@ -24,7 +24,7 @@
       // var subname = '气泡是对应的参与人数'
       var nameColor = '#fff'
       var nameFontFamily = '楷体'
-      var nameFontSize = 52
+      // var nameFontSize = 52
       var mapName = 'china'
       var geoCoordMap = {}
       // var toolTipData = []
@@ -105,8 +105,7 @@
           // },
           textStyle: {
             color: nameColor,
-            fontFamily: nameFontFamily,
-            fontSize: nameFontSize
+            fontFamily: nameFontFamily
           }
         },
         backgroundColor: '#223b4d',

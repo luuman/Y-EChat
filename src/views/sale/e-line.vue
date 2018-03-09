@@ -27,7 +27,7 @@
     },
     mounted () {
       API.queryForAbstract().then(res => {
-        this.list.data.data
+        this.list = res.data.data
       }, (err) => {
         console.log(err)
       })
