@@ -69,7 +69,7 @@
       }
     },
     mounted () {
-      API.queryRevenue('turnover', this.date, '').then(res => {
+      API.queryRevenue('turnover', this.date, '', '').then(res => {
         if (res.flag === 20000) {
           res.data.companyRevenue.parmList.forEach((v) => {
             this.news.turnover += Number(v.turnover)
@@ -85,7 +85,7 @@
       }, (err) => {
         console.log(err)
       })
-      API.queryRevenue('turnover', this.date - 1, '').then(res => {
+      API.queryRevenue('turnover', this.date - 1, '', '').then(res => {
         if (res.flag === 20000) {
           res.data.companyRevenue.parmList.forEach((v) => {
             this.last.turnover += Number(v.turnover)

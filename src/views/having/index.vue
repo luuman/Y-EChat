@@ -6,108 +6,24 @@
       <div class="box">
         <div class="new">
           <p>
-            <span class="total">￥{{shows}}</span>
+            <span class="total">￥{{news.turnover}}</span>
             <span class="text">营业额</span>
           </p>
           <p>
-            <span class="total">￥{{shows}}</span>
+            <span class="total">￥{{news.rebate}}</span>
             <span class="text">返佣</span>
           </p>
           <p>
-            <span class="total">￥{{shows}}</span>
+            <span class="total">￥{{news.travelnum}}</span>
             <span class="text">出游人</span>
           </p>
         </div>
       </div>
       <div class="list">
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
-          <p><a href="javascript:;">更多</a><i>></i></p>
-        </div>
-        <div class="item" @click="info('')">
-          <p>山东山东山东省</p>
-          <p>营业额<span> ¥109780.00000000</span></p>
-          <p>出游人 6890000000</p>
+        <div class="item" @click="info(item.provinceName)" v-for="item in yearList">
+          <p>{{item.provinceName}}</p>
+          <p>营业额<span> ¥{{item.turnover}}</span></p>
+          <p>出游人{{item.travelnum}}</p>
           <p><a href="javascript:;">更多</a><i>></i></p>
         </div>
       </div>
@@ -124,12 +40,33 @@
     data () {
       return {
         shows: 0,
+        last: {
+          turnover: 0,
+          rebate: 0,
+          travelnum: 0
+        },
+        news: {
+          turnover: 0,
+          rebate: 0,
+          travelnum: 0
+        },
+        yearList: [],
         date: new Date().getFullYear()
       }
     },
     mounted () {
-      API.AllGpMonth().then(res => {
+      API.queryRevenue('turnover', '', '', '').then(res => {
         if (res.flag === 20000) {
+          res.data.companyRevenue.parmList.forEach((v) => {
+            this.news.turnover += Number(v.turnover)
+            this.news.rebate += Number(v.rebate)
+            this.news.travelnum += Number(v.travelnum)
+            this.yearList.push({
+              provinceName: v.provinceName,
+              turnover: v.turnover,
+              travelnum: v.travelnum
+            })
+          })
         }
       }, (err) => {
         console.log(err)
@@ -138,8 +75,8 @@
     watch: {
     },
     methods: {
-      info () {
-        this.$router.push({name: 'YearInfo'})
+      info (info) {
+        this.$router.push({name: 'HavingInfo', params: { city: info }})
       }
     },
     filters: {}
@@ -167,6 +104,7 @@
         @include font-size(14px);
         text-align: left;
         color: #666;
+        height: 100%;
         line-height: size(45);
         padding-right: size(10);
         overflow: hidden;

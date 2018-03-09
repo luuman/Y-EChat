@@ -3,24 +3,40 @@
     <heads :Title="$route.params.city"></heads>
     <div class="table">
       <div class="th">
-        <div>分公司</div>
-        <div>营业部</div>
-        <div>营业额-{{date - 1}}(元)</div>
-        <div>营业额-{{date}}(元)</div>
-        <div>返佣-{{date - 1}}(元)</div>
-        <div>返佣-{{date}}(元)</div>
-        <div>出游人数-{{date - 1}}</div>
-        <div>出游人-{{date}}</div>
+        <div class="box1">分公司</div>
+        <div class="box2">营业部</div>
+        <div class="box3">营业额-{{date - 1}}(元)</div>
+        <div class="box4">营业额-{{date}}(元)</div>
+        <div class="box5">返佣-{{date - 1}}(元)</div>
+        <div class="box6">返佣-{{date}}(元)</div>
+        <div class="box7">出游人数-{{date - 1}}</div>
+        <div class="box8">出游人-{{date}}</div>
       </div>
-      <div v-if="!showNo" :class="{td: true, num: item.companyName === '汇总'}" v-for="item in cityList">
-        <div @click="show(item.companyName)">{{item.companyName}}</div>
-        <div></div>
-        <div>{{item.turnovers | format}}</div>
-        <div>{{item.turnover | format}}</div>
-        <div>{{item.rebates | format}}</div>
-        <div>{{item.rebate | format}}</div>
-        <div>{{item.travelnums | format}}</div>
-        <div>{{item.travelnum | format}}</div>
+      <div v-if="!showNo" :class="{td: true, num: item.companyName === '汇总'}" v-for="(item, index) in cityList">
+        <div class="box" v-if="!item.show">
+          <div class="box1" @click="show(item.companyName, index)"><i class="add"></i>{{item.companyName}}</div>
+          <div class="box2"></div>
+          <div class="box3">{{item.turnovers | format}}</div>
+          <div class="box4">{{item.turnover | format}}</div>
+          <div class="box5">{{item.rebates | format}}</div>
+          <div class="box6">{{item.rebate | format}}</div>
+          <div class="box7">{{item.travelnums | format}}</div>
+          <div class="box8">{{item.travelnum | format}}</div>
+        </div>
+        <div class="boxz" v-if="item.show">
+          <div class="box1" @click="show(item.companyName, index)">box<span><i class="subtract"></i>{{item.companyName}}</span></div>
+          <div class="boxs">
+            <div :class="{num: items.branchName === '汇总'}" v-for="items in item.list">
+              <div class="box2">{{items.branchName}}</div>
+              <div class="box3">{{items.turnovers | format}}</div>
+              <div class="box4">{{items.turnover | format}}</div>
+              <div class="box5">{{items.rebates | format}}</div>
+              <div class="box6">{{items.rebate | format}}</div>
+              <div class="box7">{{items.travelnums | format}}</div>
+              <div class="box8">{{items.travelnum | format}}</div>
+            </div>
+          </div>
+        </div>
       </div>
       <div v-if="showNo" class="td" v-for="item in cityLists">
         <div></div>
@@ -48,45 +64,60 @@
       }
     },
     methods: {
-      show (name) {
-        this.showNo = true
-        API.queryRevenue('turnover', this.date, '', this.$route.params.city, name).then(res => {
-          if (res.flag === 20000) {
-            API.queryRevenue('turnover', this.date - 1, '', this.$route.params.city, name).then(ress => {
-              if (ress.flag === 20000) {
-                res.data.companyRevenue.parmList.forEach((v) => {
-                  let citys = {
-                    turnover: 0,
-                    rebate: 0,
-                    travelnum: 0
-                  }
-                  ress.data.companyRevenue.parmList.forEach((l) => {
-                    if (v.branchName === l.branchName) {
-                      citys.turnover = l.turnover
-                      citys.rebate = l.rebate
-                      citys.travelnum = l.travelnum
+      show (name, index) {
+        if (name === '汇总') return
+        let citys = this.cityList[index]
+        if (citys.show === true) {
+          this.cityList[index].show = false
+        } else {
+          citys.show = true
+          API.queryRevenue('turnover', this.date, '', this.$route.params.city, name).then(res => {
+            if (res.flag === 20000) {
+              API.queryRevenue('turnover', this.date - 1, '', this.$route.params.city, name).then(ress => {
+                if (ress.flag === 20000) {
+                  res.data.companyRevenue.parmList.forEach((v) => {
+                    let citys = {
+                      turnover: 0,
+                      rebate: 0,
+                      travelnum: 0
                     }
+                    ress.data.companyRevenue.parmList.forEach((l) => {
+                      if (v.branchName === l.branchName) {
+                        citys.turnover = l.turnover
+                        citys.rebate = l.rebate
+                        citys.travelnum = l.travelnum
+                      }
+                    })
+                    this.cityList[index].list.push({
+                      branchName: v.branchName,
+                      turnover: v.turnover,
+                      turnovers: citys.turnover,
+                      rebate: v.rebate,
+                      rebates: citys.rebate,
+                      travelnums: citys.travelnum,
+                      travelnum: v.travelnum
+                    })
                   })
-                  this.cityLists.push({
-                    branchName: v.branchName,
-                    turnover: v.turnover,
-                    turnovers: citys.turnover,
-                    rebate: v.rebate,
-                    rebates: citys.rebate,
-                    travelnums: citys.travelnum,
-                    travelnum: v.travelnum,
-                    list: []
+                  console.log(this.cityList[index].list)
+                  this.cityList[index].list.push({
+                    branchName: '汇总',
+                    turnover: citys.turnover,
+                    turnovers: citys.turnovers,
+                    rebate: citys.rebate,
+                    rebates: citys.rebates,
+                    travelnums: citys.travelnums,
+                    travelnum: citys.travelnum
                   })
-                })
-                console.log(this.cityLists)
-              }
-            }, (errs) => {
-              console.log(errs)
-            })
-          }
-        }, (err) => {
-          console.log(err)
-        })
+                }
+              }, (errs) => {
+                console.log(errs)
+              })
+            }
+          }, (err) => {
+            console.log(err)
+          })
+          console.log(citys)
+        }
       },
       back (isNo) {
         this.backs = isNo
@@ -105,6 +136,7 @@
                 rebates: 0,
                 travelnums: 0,
                 travelnum: 0,
+                show: false,
                 list: []
               }
               res.data.companyRevenue.parmList.forEach((v) => {
@@ -135,6 +167,7 @@
                   rebates: citys.rebate,
                   travelnums: citys.travelnum,
                   travelnum: v.travelnum,
+                  show: false,
                   list: []
                 })
               })
@@ -167,12 +200,13 @@
     width: 100%;
     overflow: auto;
     .th{
+      height: size(40);
       background-color: #3e8fe6;
       div{
         color: #FFF;
       }
     }
-    .td{
+    .td .box{
       div{
         color: #666;
         border-bottom: solid size(1) #EEE;
@@ -182,17 +216,70 @@
         }
       }
     }
-    .tb{
-      div{
-        color: #666;
-        border-bottom: solid size(1) #EEE;
-        &:nth-child(8n+3), &:nth-child(8n+4), &:nth-child(8n+5), &:nth-child(8n+6), &:nth-child(8n+7), &:nth-child(8n+8){
+    .boxz{
+      width: size(1120);
+      overflow: hidden;
+      position: relative;
+      // float: left;
+      .box1, .boxs{
+        float: left;
+      }
+      .box1{
+        @include font-size(13px);
+        height: 100%;
+        span{
+          position: absolute;
+          width: size(200);
+          height: 100%;
+          background: #FFF;
+          left: 0;
+          box-sizing: border-box;
+          top: 0;
+          line-height: 100%;
           border-right: solid size(1) #EEE;
+          border-bottom: solid size(1) #EEE;
+          padding-left: size(10);
+          padding-right: size(10);
+          min-height: size(40);
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          &:after {
+            display:inline-block;
+            width:0;
+            height:100%;
+            vertical-align:middle;
+            content:"";
+          }
+        }
+      }
+      .boxs{
+        width: size(920);
+        .num{
+          background: rgba(255, 235, 63, 0.15);
+        }
+        div{
+          height: size(40);
+          div{
+            float: left;
+            text-align: right;
+            @include font-size(13px);
+            height: size(40);
+            border-right: solid size(1) #EEE;
+            border-bottom: solid size(1) #EEE;
+            line-height: size(40);
+            box-sizing: border-box;
+            padding-left: size(10);
+            padding-right: size(10);
+          }
+          .box2{
+            text-align: left;
+          }
         }
       }
     }
-    .th,.td{
-      width: size(1800);
+    .th,.td .box{
+      width: size(1120);
       height: size(40);
       div{
         float: left;
@@ -205,34 +292,41 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        &:nth-child(8n+1){
-          width: size(200);
-        }
-        &:nth-child(8n+2){
-          width: size(200);
-        }
-        &:nth-child(8n+3){
-          width: size(100);
-        }
-        &:nth-child(8n+4){
-          width: size(200);
-        }
-        &:nth-child(8n+5){
-          width: size(200);
-        }
-        &:nth-child(8n+6){
-          width: size(200);
-        }
-        &:nth-child(8n+7){
-          width: size(200);
-        }
-        &:nth-child(8n+8){
-          width: size(200);
-        }
       }
-      &.num{
-        background: #ffeb3f;
-      }
+    }
+    .box1, .box2{
+      width: size(200);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .box3, .box4, .box5, .box6, .box7, .box8{
+      width: size(120);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .num .box{
+      background: rgba(255, 235, 63, 0.15);
+    }
+    .subtract, .add{
+      width: size(15);
+      height: size(15);
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: size(6);
+      background-size: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .num .add{
+      display: none;
+    }
+    .subtract{
+      background-image: url(../../assets/img/subtract.png);
+    }
+    .add{
+      background-image: url(../../assets/img/add.png);
     }
   }
 </style>
