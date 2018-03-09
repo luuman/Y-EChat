@@ -226,6 +226,7 @@
       }
       .active {
         border-bottom: size(2) solid #c6129a;
+        color: #c6129a;
       }
     }
   }
