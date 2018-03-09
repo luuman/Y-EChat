@@ -98,7 +98,6 @@
                       travelnum: v.travelnum
                     })
                   })
-                  console.log(this.cityList[index].list)
                   this.cityList[index].list.push({
                     branchName: '汇总',
                     turnover: citys.turnover,
@@ -152,7 +151,6 @@
                     citys.travelnum = l.travelnum
                   }
                 })
-                console.log(Number(citys.turnover))
                 last.turnover += Number(v.turnover)
                 last.turnovers += Number(citys.turnover)
                 last.rebate += Number(v.rebate)

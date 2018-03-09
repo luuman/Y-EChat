@@ -34,7 +34,6 @@ axios.interceptors.response.use((res) => {
   //   return Promise.reject(res)
   // }
   if (res.data.flag === 50001) {
-    console.log('Login')
     router.push({name: 'Login'})
   }
   Tool.close()
