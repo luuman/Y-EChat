@@ -121,7 +121,6 @@
       }
     },
     mounted () {
-      // console.log(JSON.parse(this.title))
       API.queryRevenue('rate', this.date, this.months, this.title, '').then(res => {
         if (res.flag === 20000) {
           let last = {

@@ -3,8 +3,8 @@
 </template>
 <script>
   import echarts from 'echarts'
-  import 'echarts/lib/chart/map'
-  import 'echarts/map/js/china.js'
+  // import 'echarts/lib/chart/map'
+  // import 'echarts/map/js/china.js'
   export default {
     components: {
     },
