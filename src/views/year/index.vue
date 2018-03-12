@@ -47,8 +47,8 @@
 <script>
   import Heads from 'COMPONENT/head'
   import API from 'API'
-  import XLSX from 'xlsx'
-  import FileSaver from 'file-saver'
+  // import XLSX from 'xlsx'
+  // import FileSaver from 'file-saver'
   export default {
     components: {
       Heads
