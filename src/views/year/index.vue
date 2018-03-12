@@ -47,6 +47,8 @@
 <script>
   import Heads from 'COMPONENT/head'
   import API from 'API'
+  import XLSX from 'xlsx'
+  import FileSaver from 'file-saver'
   export default {
     components: {
       Heads
@@ -106,19 +108,31 @@
       },
       down () {
         console.log('dfdf')
+        // function s2ab (s) {
+        //   var buf = new ArrayBuffer(s.length)
+        //   var view = new Uint8Array(buf)
+        //   for (var i = 0; i !== s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF
+        //   return buf
+        // }
         API.downTurnover().then(res => {
-          let blob = new Blob([res], {type: 'application/vnd.ms-excel'})
-          if (window.navigator.msSaveOrOpenBlob) {
-            window.navigator.msSaveBlob(blob, '营业额.xls')
-          } else {
-            let elink = document.createElement('a')
-            elink.download = '营业额.xls'
-            elink.style.display = 'none'
-            elink.href = window.URL.createObjectURL(blob)
-            document.body.appendChild(elink)
-            elink.click()
-            document.body.removeChild(elink)
-          }
+          // let blob = new Blob([res], {type: 'application/vnd.ms-excel'})
+          // if (window.navigator.msSaveOrOpenBlob) {
+          //   window.navigator.msSaveBlob(blob, '营业额.xls')
+          // } else {
+          //   let elink = document.createElement('a')
+          //   elink.download = '营业额.xls'
+          //   elink.style.display = 'none'
+          //   elink.href = window.URL.createObjectURL(blob)
+          //   document.body.appendChild(elink)
+          //   elink.click()
+          //   document.body.removeChild(elink)
+          // }
+
+          // const data = XLSX.utils.json_to_sheet(res)
+          // var workbook = XLSX.utils.book_new()
+          // XLSX.utils.book_append_sheet(workbook, data, 'string')
+          // var wbout = XLSX.write(workbook, { bookType: 'xls', bookSST: false, type: 'binary' })
+          // FileSaver.saveAs(new Blob([data], {type: 'application/octet-stream'}), `download.xlsx`)
         }, (err) => {
           console.log(err)
         })
