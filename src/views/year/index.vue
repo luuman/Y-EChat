@@ -105,10 +105,20 @@
         this.$router.push({name: 'YearInfo', params: { city: info }})
       },
       down () {
-        API.downTurnover().then(res => {
-        }, (err) => {
-          console.log(err)
-        })
+        console.log('dfdf')
+        let url = `${window.location.origin}/ykly-analysis-web/analysis/travel/export/exportBranchTurnoverEveryYear?dataType=branchTurnoverEveryYear`
+        // API.downTurnover().then(res => {
+        //   // window.open(res)
+        // }, (err) => {
+        //   console.log(err)
+        // })
+        let iframe = document.createElement('iframe')
+        iframe.style.display = 'none'
+        iframe.src = url
+        iframe.onload = function () {
+          document.body.removeChild(iframe)
+        }
+        document.body.appendChild(iframe)
       }
     },
     filters: {}

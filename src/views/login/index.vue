@@ -16,7 +16,7 @@
           </span>
         </li>
       </ul>
-      <div>记住密码</div>
+      <!-- <div>记住密码</div> -->
       <div class="join" @click="Login" :class="{nologin: !noLogin}">登录</div>
     </div>
   </div>
@@ -44,7 +44,7 @@
         }
         API.Login(this.vaUser.uName, this.vaUser.code).then(res => {
           if (res.flag === 20000) {
-            this.$router.push({name: 'Nav'})
+            // this.$router.push({name: 'Nav'})
             // window.location.reload()
           } else {
             // window.Aalert(res.msg)

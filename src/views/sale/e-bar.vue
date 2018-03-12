@@ -25,7 +25,7 @@
           console.log(res.data.reportList)
           res.data.reportList.forEach((v) => {
             if (v.provinceName === null) {
-              v.provinceName = '全部'
+              v.provinceName = ' '
             }
             this.date.push(v.provinceName)
             this.people.push(v.peopleTotal)

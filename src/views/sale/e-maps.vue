@@ -26,7 +26,7 @@
             }
             this.people.push({
               num: v.peopleTotal,
-              value: v.rebateTotal,
+              value: v.turnoverTotal,
               name: v.provinceName.replace(/[市|省|自治区|壮族治区]/, '')
             })
           })
