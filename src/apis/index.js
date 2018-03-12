@@ -87,8 +87,8 @@ export default {
   GpMonth (provinceName, categoryLargeName) {
     return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpMonth?provinceName=${provinceName}&categoryLargeName=${categoryLargeName}`, true)
   },
-  GpProvince (theYearh, theMonth, categoryLargeName) {
-    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpProvince?theYearh=${theYearh}&theMonth=${theMonth}&categoryLargeName=${categoryLargeName}`, true)
+  GpProvince (theYear, theMonth, categoryLargeName) {
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpProvince?theYear=${theYear}&theMonth=${theMonth}&categoryLargeName=${categoryLargeName}`, true)
   },
   // 获取所有省份某年的营业额、返佣、出游人数
   // datatype  数据类别  营业额：turnover  同比环比：rate orderYear 年份
@@ -116,6 +116,6 @@ export default {
   },
   // 2018出游人数(大类销售统计)
   loadSaleByOrdertype (year, month, province) {
-    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpcategoryLargeName?theYearh=${year}&theMonth=${month}&provinceName=${province}`, true)
+    return oGet(`/ykly-analysis-web/analysis/report/query/queryForStatisticsGpcategoryLargeName?theYear=${year}&theMonth=${month}&provinceName=${province}`, true)
   }
 }
