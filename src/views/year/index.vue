@@ -106,19 +106,35 @@
       },
       down () {
         console.log('dfdf')
-        let url = `${window.location.origin}/ykly-analysis-web/analysis/travel/export/exportBranchTurnoverEveryYear?dataType=branchTurnoverEveryYear`
-        // API.downTurnover().then(res => {
-        //   // window.open(res)
-        // }, (err) => {
-        //   console.log(err)
-        // })
-        let iframe = document.createElement('iframe')
-        iframe.style.display = 'none'
-        iframe.src = url
-        iframe.onload = function () {
-          document.body.removeChild(iframe)
-        }
-        document.body.appendChild(iframe)
+        API.downTurnover().then(res => {
+          let blob = new Blob([res], {type: 'application/vnd.ms-excel'})
+          if (window.navigator.msSaveOrOpenBlob) {
+            window.navigator.msSaveBlob(blob, '营业额.xls')
+          } else {
+            let elink = document.createElement('a')
+            elink.download = '营业额.xls'
+            elink.style.display = 'none'
+            elink.href = window.URL.createObjectURL(blob)
+            document.body.appendChild(elink)
+            elink.click()
+            document.body.removeChild(elink)
+          }
+        }, (err) => {
+          console.log(err)
+        })
+        // let url = `${window.location.origin}/ykly-analysis-web/analysis/travel/export/exportBranchTurnoverEveryYear?dataType=branchTurnoverEveryYear`
+        // // API.downTurnover().then(res => {
+        // //   // window.open(res)
+        // // }, (err) => {
+        // //   console.log(err)
+        // // })
+        // let iframe = document.createElement('iframe')
+        // iframe.style.display = 'none'
+        // iframe.src = url
+        // iframe.onload = function () {
+        //   document.body.removeChild(iframe)
+        // }
+        // document.body.appendChild(iframe)
       }
     },
     filters: {}

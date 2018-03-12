@@ -2,7 +2,7 @@
   <div>
     <eLine v-if="people.length" :people="people" :rebate="rebate" :business="business" :time="time"></eLine>
     <div class="more">
-      <p>摘要：1.截至目前，盈科旅游下属分公司<span>{{list.company}}</span>家，营业部<span>{{list.department}}</span>家，其中<span>{{list.companyDepartment}}</span>家营业部分公司产生线上业务。</p>
+      <p>摘要：1.截至目前，盈科旅游下属分公司<span>{{list.company}}</span>家，营业部<span>{{list.department}}</span>家，计{{list.companyDepartment}}家。其中<span>{{list.onlineDepartment}}</span>家营业部分公司产生线上业务。</p>
       <p>2. 自2016年以来盈科旅游线上平台总体营业额<span>{{list.turnover}}</span>元，总体返佣<span>{{list.rebate}}</span>元。</p>
       <p>3. 近三年出行人次计<span>{{list.peopleNumber}}</span>，其中2016年<span>{{list.peopleNumber2016}}</span>人次，2017年<span>{{list.peopleNumber2017}}</span>人次，2018年<span>{{list.peopleNumber2018}}</span>人次（截止{{new Date().getMonth()}}月{{new Date().getDate()}}日）。</p>
     </div>
