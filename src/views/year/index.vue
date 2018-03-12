@@ -1,6 +1,6 @@
 <template>
   <div class="view">
-    <heads :Title="$route.meta.title" @down="down"></heads>
+    <heads :Title="$route.meta.title" :down="down" :show="true"></heads>
     <div class="top">
       <p class="title">年度销售榜</p>
       <div class="box">
@@ -47,8 +47,6 @@
 <script>
   import Heads from 'COMPONENT/head'
   import API from 'API'
-  // import XLSX from 'xlsx'
-  // import FileSaver from 'file-saver'
   export default {
     components: {
       Heads
@@ -56,6 +54,7 @@
     data () {
       return {
         shows: 0,
+        down: `${window.location.origin}/ykly-analysis-web/analysis/travel/export/exportBranchTurnoverEveryYear?dataType=branchTurnoverEveryYear`,
         last: {
           turnover: 0,
           rebate: 0,
@@ -105,50 +104,6 @@
       info (info) {
         if (info === null) return
         this.$router.push({name: 'YearInfo', params: { city: info }})
-      },
-      down () {
-        console.log('dfdf')
-        // function s2ab (s) {
-        //   var buf = new ArrayBuffer(s.length)
-        //   var view = new Uint8Array(buf)
-        //   for (var i = 0; i !== s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF
-        //   return buf
-        // }
-        API.downTurnover().then(res => {
-          // let blob = new Blob([res], {type: 'application/vnd.ms-excel'})
-          // if (window.navigator.msSaveOrOpenBlob) {
-          //   window.navigator.msSaveBlob(blob, '营业额.xls')
-          // } else {
-          //   let elink = document.createElement('a')
-          //   elink.download = '营业额.xls'
-          //   elink.style.display = 'none'
-          //   elink.href = window.URL.createObjectURL(blob)
-          //   document.body.appendChild(elink)
-          //   elink.click()
-          //   document.body.removeChild(elink)
-          // }
-
-          // const data = XLSX.utils.json_to_sheet(res)
-          // var workbook = XLSX.utils.book_new()
-          // XLSX.utils.book_append_sheet(workbook, data, 'string')
-          // var wbout = XLSX.write(workbook, { bookType: 'xls', bookSST: false, type: 'binary' })
-          // FileSaver.saveAs(new Blob([data], {type: 'application/octet-stream'}), `download.xlsx`)
-        }, (err) => {
-          console.log(err)
-        })
-        // let url = `${window.location.origin}/ykly-analysis-web/analysis/travel/export/exportBranchTurnoverEveryYear?dataType=branchTurnoverEveryYear`
-        // // API.downTurnover().then(res => {
-        // //   // window.open(res)
-        // // }, (err) => {
-        // //   console.log(err)
-        // // })
-        // let iframe = document.createElement('iframe')
-        // iframe.style.display = 'none'
-        // iframe.src = url
-        // iframe.onload = function () {
-        //   document.body.removeChild(iframe)
-        // }
-        // document.body.appendChild(iframe)
       }
     },
     filters: {}

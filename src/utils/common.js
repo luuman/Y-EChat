@@ -18,6 +18,26 @@ export const parseUA = () => {
 }
 
 /**
+ * 浏览器UA
+ */
+import Loading from 'COMPONENT/vue-loading'
+export const downLoad = (url) => {
+  let iframe = document.createElement('iframe')
+  iframe.style.display = 'none'
+  iframe.src = url
+  Loading.open('生成中……')
+  window.setTimeout(() => {
+    Loading.close()
+  }, 3000)
+  // iframe.onload = function () {
+  //   console.log('shod')
+  //   document.body.removeChild(iframe)
+  //   Loading.close()
+  // }
+  document.body.appendChild(iframe)
+}
+
+/**
  * 网页标题修改
  */
 export const setDocumentTitle = (title) => {

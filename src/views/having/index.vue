@@ -1,6 +1,6 @@
 <template>
   <div class="view">
-    <heads :Title="$route.meta.title"></heads>
+    <heads :Title="$route.meta.title" :down="down" :show="true"></heads>
     <div class="top">
       <p class="title">数据汇总</p>
       <div class="box">
@@ -40,6 +40,7 @@
     data () {
       return {
         shows: 0,
+        down: `${window.location.origin}/ykly-analysis-web/analysis/travel/export/exportBranchTurnoverAllYear?dataType=branchTurnoverAllYear`,
         last: {
           turnover: 0,
           rebate: 0,

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header">
-      <heads :Title="$route.meta.title"></heads>
+      <heads :Title="$route.meta.title" :down="down" :show="true"></heads>
       <p class="tab">
         <span :class="[{'active': this.active == 0}]" @click="changeTab(0)">类型统计</span>
         <span :class="[{'active': this.active == 1}]" @click="changeTab(1)">出游人饼图</span>
@@ -44,6 +44,7 @@
       return {
         active: 0,
         tableData: [],
+        down: `${window.location.origin}/ykly-analysis-web//analysis/order/export/exportStatisticsGpcategoryLargeName`,
         pieLegendData: [],
         pieSeriesData: [],
         barLegendData: [],

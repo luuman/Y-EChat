@@ -2,7 +2,7 @@
   <div class="head">
     <span class="nav"  @click="back(true)"></span>
     <p class="title">{{Title}}</p>
-    <span class="down" @click="download()"></span>
+    <span class="down" @click="download()" v-if="show"></span>
     <div class="navs" v-if="backs">
       <div class="back" @click="back(false)">
         <span></span>
@@ -29,6 +29,7 @@
 </template>
 <script>
   // import API from 'API'
+  import {downLoad} from 'UTIL/common.js'
   export default {
     methods: {
       link (links) {
@@ -39,7 +40,7 @@
         this.backs = isNo
       },
       download () {
-        this.$emit('down')
+        downLoad(this.down)
       }
     },
     data () {
@@ -48,7 +49,9 @@
       }
     },
     props: {
-      Title: String
+      Title: String,
+      down: String,
+      show: Boolean
     }
   }
 </script>

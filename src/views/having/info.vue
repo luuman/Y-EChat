@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <heads :Title="$route.params.city"></heads>
+    <heads :Title="$route.params.city" :show="false"></heads>
     <div class="table">
       <div class="th">
         <div class="box1">分公司</div>

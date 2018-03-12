@@ -1,6 +1,6 @@
 <template>
   <div class="view">
-    <heads :Title="$route.meta.title"></heads>
+    <heads :Title="$route.meta.title" :show="false"></heads>
     <!-- <eLine :people="people" :rebate="rebate" :business="business" :time="time"></eLine> -->
     <div class="sale-tap">
       <router-link active-class replace to="/Sale/Line">月份统计</router-link>

@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <heads :Title="title"></heads>
+    <heads :Title="title" :show="false"></heads>
     <div class="table">
       <div class="th">
         <div class="box1">分公司</div>

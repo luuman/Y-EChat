@@ -1,6 +1,6 @@
 <template>
   <div class="view">
-    <heads :Title="$route.meta.title"></heads>
+    <heads :Title="$route.meta.title" :down="down" :show="true"></heads>
     <div class="top">
       <p class="title">环比同比汇总</p>
       <!-- <div class="box">
@@ -86,6 +86,7 @@
         shows: 0,
         huan: '-100%',
         huans: '20%',
+        down: `${window.location.origin}/ykly-analysis-web/analysis/travel/export/exportBranchRateEveryYear?dataType=branchRateEveryYear`,
         news: {
           turnover: 0,
           turnoverYearonyear: 0,
