@@ -76,6 +76,7 @@
               API.queryRevenue('turnover', this.date - 1, '', this.$route.params.city, name).then(ress => {
                 if (ress.flag === 20000) {
                   this.cityList[index].list = []
+                  let names = {}
                   res.data.companyRevenue.parmList.forEach((v) => {
                     let citys = {
                       turnover: 0,
@@ -98,6 +99,22 @@
                       travelnums: citys.travelnum,
                       travelnum: v.travelnum
                     })
+                    names[v.branchName] = true
+                  })
+                  ress.data.companyRevenue.parmList.forEach((l) => {
+                    if (!names[l.branchName]) {
+                      this.cityList[index].list.push({
+                        branchName: l.branchName,
+                        turnover: 0,
+                        turnovers: l.turnover,
+                        rebate: 0,
+                        rebates: l.rebate,
+                        travelnums: l.travelnum,
+                        travelnum: 0,
+                        show: false,
+                        list: []
+                      })
+                    }
                   })
                   this.cityList[index].list.push({
                     branchName: '汇总',
@@ -138,6 +155,7 @@
                 show: false,
                 list: []
               }
+              let names = {}
               res.data.companyRevenue.parmList.forEach((v) => {
                 let citys = {
                   turnover: 0,
@@ -168,6 +186,22 @@
                   show: false,
                   list: []
                 })
+                names[v.companyName] = true
+              })
+              ress.data.companyRevenue.parmList.forEach((l) => {
+                if (!names[l.companyName]) {
+                  this.cityList.push({
+                    companyName: l.companyName,
+                    turnover: 0,
+                    turnovers: l.turnover,
+                    rebate: 0,
+                    rebates: l.rebate,
+                    travelnums: l.travelnum,
+                    travelnum: 0,
+                    show: false,
+                    list: []
+                  })
+                }
               })
               this.cityList.push(last)
             }

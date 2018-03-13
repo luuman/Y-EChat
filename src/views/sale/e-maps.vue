@@ -17,7 +17,7 @@
       }
     },
     mounted () {
-      API.GpProvince('', '', '').then(res => {
+      API.GpProvince(this.times, '', '').then(res => {
         if (res.flag === 20000) {
           console.log(res.data.reportList)
           res.data.reportList.forEach((v) => {
