@@ -63,6 +63,7 @@
           citys.show = true
           API.queryRevenue('turnover', '', '', this.$route.params.city, name).then(res => {
             if (res.flag === 20000) {
+              this.cityList[index].list = []
               res.data.companyRevenue.parmList.forEach((v) => {
                 this.cityList[index].list.push({
                   branchName: v.branchName,
@@ -71,7 +72,6 @@
                   travelnum: v.travelnum
                 })
               })
-              console.log(this.cityList[index].list)
               this.cityList[index].list.push({
                 branchName: '汇总',
                 turnover: citys.turnover,

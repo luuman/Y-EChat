@@ -75,6 +75,7 @@
             if (res.flag === 20000) {
               API.queryRevenue('turnover', this.date - 1, '', this.$route.params.city, name).then(ress => {
                 if (ress.flag === 20000) {
+                  this.cityList[index].list = []
                   res.data.companyRevenue.parmList.forEach((v) => {
                     let citys = {
                       turnover: 0,
@@ -115,7 +116,6 @@
           }, (err) => {
             console.log(err)
           })
-          console.log(citys)
         }
       },
       back (isNo) {
