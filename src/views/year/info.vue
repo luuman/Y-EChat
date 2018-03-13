@@ -169,6 +169,7 @@
                     citys.travelnum = l.travelnum
                   }
                 })
+                console.log(last.turnover)
                 last.turnover += Number(v.turnover)
                 last.turnovers += Number(citys.turnover)
                 last.rebate += Number(v.rebate)
@@ -190,6 +191,9 @@
               })
               ress.data.companyRevenue.parmList.forEach((l) => {
                 if (!names[l.companyName]) {
+                  last.turnovers += Number(l.turnover)
+                  last.rebates += Number(l.rebate)
+                  last.travelnums += Number(l.travelnum)
                   this.cityList.push({
                     companyName: l.companyName,
                     turnover: 0,
