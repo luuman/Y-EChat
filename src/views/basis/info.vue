@@ -63,6 +63,7 @@
         return Number(num).toFixed().replace(/\B(?=(\d{3})+\b)/g, ',').replace(/^/, ' ')
       },
       formatFixed (num) {
+        if (num === '/') return num
         if (num === null) return 0
         return Number(String(num).replace('%', '')).toFixed() + '%'
         // return Number((num).replace('%', '')).toFixed()
@@ -100,14 +101,14 @@
               this.cityList[index].list.push({
                 branchName: '汇总',
                 turnover: citys.turnover,
-                turnoverYearonyear: citys.turnoverYearonyear,
-                turnoverMonthonmonth: citys.turnoverMonthonmonth,
+                turnoverYearonyear: '/',
+                turnoverMonthonmonth: '/',
                 rebate: citys.rebate,
-                rebateYearonyear: citys.rebateYearonyear,
-                rebateMonthonmonth: citys.rebateMonthonmonth,
+                rebateYearonyear: '/',
+                rebateMonthonmonth: '/',
                 travelnum: citys.travelnum,
-                travelnumYearonyear: citys.travelnumYearonyear,
-                travelnumMonthonmonth: citys.travelnumMonthonmonth
+                travelnumYearonyear: '/',
+                travelnumMonthonmonth: '/'
               })
             }
           }, (err) => {
@@ -128,14 +129,14 @@
             companyName: '汇总',
             show: false,
             turnover: this.params.turnover,
-            turnoverYearonyear: this.params.turnoverYearonyear,
-            turnoverMonthonmonth: this.params.turnoverMonthonmonth,
+            turnoverYearonyear: '/',
+            turnoverMonthonmonth: '/',
             rebate: this.params.rebate,
-            rebateYearonyear: this.params.rebateYearonyear,
-            rebateMonthonmonth: this.params.rebateMonthonmonth,
+            rebateYearonyear: '/',
+            rebateMonthonmonth: '/',
             travelnum: this.params.travelnum,
-            travelnumYearonyear: this.params.travelnumYearonyear,
-            travelnumMonthonmonth: this.params.travelnumMonthonmonth,
+            travelnumYearonyear: '/',
+            travelnumMonthonmonth: '/',
             list: []
           }
           res.data.companyRevenue.parmList.forEach((v) => {
