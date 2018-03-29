@@ -23,6 +23,12 @@
         <li @click="link('Having')" class="having">
           <p><i></i><span>盈科所有数据统计</span></p>
         </li>
+        <li @click="link('Company')" class="company">
+          <p><i></i><span>分公司级别{{year}}的TOP10</span></p>
+        </li>
+        <li @click="link('Companys')" class="companys">
+          <p><i></i><span>营业部{{year}}的TOP10</span></p>
+        </li>
       </ul>
     </div>
   </div>
@@ -45,7 +51,8 @@
     },
     data () {
       return {
-        backs: false
+        backs: false,
+        year: new Date().getFullYear() - 1
       }
     },
     props: {
@@ -146,30 +153,26 @@
         }
       }
     }
-    .sales{
-      i{
-        background-image: url(../../assets/img/nav/sale.png);
-      }
+    .sales i{
+      background-image: url(../../assets/img/nav/sale.png);
     }
-    .classify{
-      i{
-        background-image: url(../../assets/img/nav/classify.png);
-      }
+    .classify i{
+      background-image: url(../../assets/img/nav/classify.png);
     }
-    .year{
-      i{
-        background-image: url(../../assets/img/nav/year.png);
-      }
+    .year i{
+      background-image: url(../../assets/img/nav/year.png);
     }
-    .basis{
-      i{
-        background-image: url(../../assets/img/nav/basis.png);
-      }
+    .basis i{
+      background-image: url(../../assets/img/nav/basis.png);
     }
-    .having{
-      i{
-        background-image: url(../../assets/img/nav/having.png);
-      }
+    .having i{
+      background-image: url(../../assets/img/nav/having.png);
+    }
+    .company i{
+      background-image: url(../../assets/img/nav/company.png);
+    }
+    .companys i{
+      background-image: url(../../assets/img/nav/company.png);
     }
   }
 </style>

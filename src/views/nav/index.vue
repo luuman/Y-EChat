@@ -16,6 +16,12 @@
       <li @click="link('Having')" class="having">
         <p><i></i><span>盈科所有数据统计</span></p>
       </li>
+      <li @click="link('Company')" class="company">
+        <p><i></i><span>分公司级别{{year}}的TOP10</span></p>
+      </li>
+      <li @click="link('Companys')" class="companys">
+        <p><i></i><span>营业部{{year}}的TOP10</span></p>
+      </li>
     </ul>
   </div>
 </template>
@@ -26,6 +32,7 @@
     },
     data () {
       return {
+        year: new Date().getFullYear() - 1
       }
     },
     mounted () {
@@ -102,6 +109,18 @@
       background-image: linear-gradient(to right, #00bb9c, #5ee89e);
       i{
         background-image: url(../../assets/img/nav/having.png);
+      }
+    }
+    .company{
+      background-image: linear-gradient(to right, #da0076, #f965a3);
+      i{
+        background-image: url(../../assets/img/nav/company.png);
+      }
+    }
+    .companys{
+      background-image: linear-gradient(to right, #ee332f, #f96947);
+      i{
+        background-image: url(../../assets/img/nav/company.png);
       }
     }
   }

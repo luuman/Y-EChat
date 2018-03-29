@@ -11,6 +11,8 @@ const Nav = r => require.ensure([], () => r(require('VIEW/nav')), 'nav')
 const Login = r => require.ensure([], () => r(require('VIEW/login')), 'login')
 const Classify = r => require.ensure([], () => r(require('VIEW/classify')), 'classify')
 const Year = r => require.ensure([], () => r(require('VIEW/year')), 'year')
+const Company = r => require.ensure([], () => r(require('VIEW/company')), 'company')
+const Companys = r => require.ensure([], () => r(require('VIEW/companys')), 'companys')
 const Basis = r => require.ensure([], () => r(require('VIEW/basis')), 'basis')
 const Having = r => require.ensure([], () => r(require('VIEW/having')), 'having')
 const YearInfo = r => require.ensure([], () => r(require('VIEW/year/info.vue')), 'year')
@@ -96,6 +98,22 @@ export default new Router({
         title: '盈科大类销售统计'
       },
       component: Classify
+    },
+    {
+      path: '/Company',
+      name: 'Company',
+      meta: {
+        title: `分公司级别${new Date().getFullYear() - 1}的TOP10`
+      },
+      component: Company
+    },
+    {
+      path: '/Companys',
+      name: 'Companys',
+      meta: {
+        title: `营业部${new Date().getFullYear() - 1}的TOP10`
+      },
+      component: Companys
     },
     {
       path: '/Year',
