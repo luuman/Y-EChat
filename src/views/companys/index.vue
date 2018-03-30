@@ -42,7 +42,7 @@
           res.data.companyRevenue.parmList.forEach((item, index) => {
             if (index > 9) return
             this.yearList.push({
-              provinceName: item.companyName,
+              provinceName: item.branchName,
               turnover: item.turnover,
               travelnum: item.travelnum,
               rebate: item.rebate
@@ -57,8 +57,8 @@
     },
     methods: {
       info (info) {
-        if (info === null) return
-        this.$router.push({name: 'YearInfo', params: { city: info }})
+        // if (info === null) return
+        // this.$router.push({name: 'YearInfo', params: { city: info }})
       }
     },
     filters: {}
