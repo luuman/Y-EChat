@@ -5,35 +5,41 @@
 </template>
 <script>
   import eLine from 'COMPONENT/e-map'
-  import API from 'API'
+  // import API from 'API'
   export default {
     components: {
       eLine
     },
     data () {
       return {
-        people: [],
+        people: [
+          {
+            num: '1',
+            value: '',
+            name: '北京'
+          }
+        ],
         times: new Date().getFullYear() - 1
       }
     },
     mounted () {
-      API.GpProvince(this.times, '', '').then(res => {
-        if (res.flag === 20000) {
-          console.log(res.data.reportList)
-          res.data.reportList.forEach((v) => {
-            if (v.provinceName === null) {
-              return
-            }
-            this.people.push({
-              num: v.peopleTotal,
-              value: v.turnoverTotal,
-              name: v.provinceName.replace(/[市|省|自治区|壮族治区]/, '')
-            })
-          })
-        }
-      }, (err) => {
-        console.log(err)
-      })
+      // API.GpProvince(this.times, '', '').then(res => {
+      //   if (res.flag === 20000) {
+      //     console.log(res.data.reportList)
+      //     res.data.reportList.forEach((v) => {
+      //       if (v.provinceName === null) {
+      //         return
+      //       }
+      //       this.people.push({
+      //         num: v.peopleTotal,
+      //         value: v.turnoverTotal,
+      //         name: v.provinceName.replace(/[市|省|自治区|壮族治区]/, '')
+      //       })
+      //     })
+      //   }
+      // }, (err) => {
+      //   console.log(err)
+      // })
     },
     watch: {
     },

@@ -10,7 +10,7 @@
 </template>
 <script>
   import eLine from 'COMPONENT/e-line'
-  import API from 'API'
+  // import API from 'API'
   export default {
     components: {
       eLine
@@ -25,25 +25,25 @@
       }
     },
     mounted () {
-      API.queryForAbstract().then(res => {
-        this.list = res.data.data
-      }, (err) => {
-        console.log(err)
-      })
-      API.AllGpMonth().then(res => {
-        if (res.flag === 20000) {
-          console.log(res.data.reportList)
-          res.data.reportList.forEach((v) => {
-            this.time.push(v.theMonth)
-            this.people.push(v.peopleTotal)
-            this.rebate.push(v.rebateTotal)
-            this.business.push(v.turnoverTotal)
-          })
-          console.log(this.time)
-        }
-      }, (err) => {
-        console.log(err)
-      })
+      // API.queryForAbstract().then(res => {
+      //   this.list = res.data.data
+      // }, (err) => {
+      //   console.log(err)
+      // })
+      // API.AllGpMonth().then(res => {
+      //   if (res.flag === 20000) {
+      //     console.log(res.data.reportList)
+      //     res.data.reportList.forEach((v) => {
+      //       this.time.push(v.theMonth)
+      //       this.people.push(v.peopleTotal)
+      //       this.rebate.push(v.rebateTotal)
+      //       this.business.push(v.turnoverTotal)
+      //     })
+      //     console.log(this.time)
+      //   }
+      // }, (err) => {
+      //   console.log(err)
+      // })
     },
     watch: {
     },

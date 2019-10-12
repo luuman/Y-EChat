@@ -1,13 +1,13 @@
 import axios from 'axios'
 import router from '../routes'
-// import {baseUrl} from './env.js'
+import {baseUrl} from './env.js'
 // const TOKEN = '8259a6e8588e7f1b2789b1680209f2f58b6aaf8b'
 
 import qs from 'qs'
 import * as Tool from 'UTIL/vuex'
 // axios 配置
 // axios.defaults.timeout = 10000
-// axios.defaults.baseURL = baseUrl
+axios.defaults.baseURL = baseUrl
 // axios.defaults.headers.common['Authorization'] = `token ${TOKEN}`
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
